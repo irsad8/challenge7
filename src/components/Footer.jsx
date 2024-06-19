@@ -16,15 +16,15 @@ function Footer() {
                         <li className="nav-item">
                             <a className="nav-link" href="#service">Our Service</a>
                         </li>
-                        <div className="nav-item">
+                        <li className="nav-item">
                             <a className="nav-link" href="#why">Why Us</a>
-                        </div>
-                        <div className="nav-item">
+                        </li>
+                        <li className="nav-item">
                             <a className="nav-link" href="#testimoni">Testimonial</a>
-                        </div>
-                        <div className="nav-item">
+                        </li>
+                        <li className="nav-item">
                             <a className="nav-link" href="#FAQ">FAQ</a>
-                        </div>
+                        </li>
                     </ul>
                 </div>
                 <div className="col-md-3 line">

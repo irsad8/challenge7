@@ -21,7 +21,7 @@ body {
 }
 
 .bg-grass {
-    background-color: #5CB85F;
+    background-color: #5CB85F !important;
 }
 
 .line-low {
@@ -86,4 +86,11 @@ body {
     .testimonial-image {
         width: 20% !important;
     }
+}
+
+.panel {
+    border-radius: 25px;
+    margin-top: -70px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }

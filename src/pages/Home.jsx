@@ -1,17 +1,17 @@
-import {Jumbotron, Reason, Service, Testi, FAQ, CTA, Footer } from '../components'
-import Nav from '../components/Nav.jsx'
+import {Nav,Jumbotron, Reason, Service, Testi, FAQ, CTA, Footer } from '../components'
+
 function Home() {
   return (
-    <div>
-        <Nav/>
-        <Jumbotron/>
-        <Reason/>
-        <Service/>
-        <Testi/>
-        <FAQ/>
-        <CTA/>
-        <Footer/>
-    </div>
+    <>
+      <Nav/>
+      <Jumbotron/>
+      <Reason/>
+      <Service/>
+      <Testi/>
+      <CTA/>
+      <FAQ/>
+      <Footer/>
+    </>
     )
 }
 
