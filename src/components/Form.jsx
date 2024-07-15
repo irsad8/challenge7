@@ -3,14 +3,13 @@ import React from "react";
 function Form({ carSelected, setCarSelected, createCar, updateCar, select, setSelect }) {
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
 
     if (select) {
-      updateCar(formData, carSelected.id);
+      updateCar(carSelected.id);
     } else {
-      createCar(formData);
+      createCar();
     }
-    setCarSelected(null);
+    setCarSelected("");
     setSelect(false)
   };
 
@@ -25,7 +24,7 @@ function Form({ carSelected, setCarSelected, createCar, updateCar, select, setSe
         aria-hidden="true"
       >
         <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
-          <form encType="multipart/form-data" onSubmit={handleSubmit}>
+          <form>
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
@@ -36,7 +35,7 @@ function Form({ carSelected, setCarSelected, createCar, updateCar, select, setSe
                   type="button"
                   data-dismiss="modal"
                   aria-label="Close"
-                  onClick={() => {setCarSelected(null), setSelect(false)}}
+                  onClick={() => {setCarSelected(""), setSelect(false)}}
                 >
                   <span aria-hidden="true">×</span>
                 </button>
@@ -52,7 +51,7 @@ function Form({ carSelected, setCarSelected, createCar, updateCar, select, setSe
                       name="manufacture"
                       value={carSelected ? carSelected.manufacture : ""}
                       required
-                      onChange={(e) => setCarSelected({...carSelected, manufacture: e.target.value})}
+                      onChange={(e) => setCarSelected({...carSelected, mobil: e.target.value})}
                     />
                   </div>
                   <div className="form-group col-md-6">
@@ -141,6 +140,7 @@ function Form({ carSelected, setCarSelected, createCar, updateCar, select, setSe
                     id="file"
                     name="file"
                     required={!carSelected}
+                    onChange={(e)=>setCarSelected({...carSelected, image : e.target.files[0].name})}
                   />
                 </div>
               </div>
@@ -149,16 +149,16 @@ function Form({ carSelected, setCarSelected, createCar, updateCar, select, setSe
                   className="btn btn-secondary"
                   type="button"
                   data-dismiss="modal"
-                  onClick={() => {setCarSelected(null), setSelect(false)}}
+                  onClick={() => {setCarSelected(""), setSelect(false)}}
                 >
                   Cancel
                 </button>
-                {carSelected ? (
-                  <button type="submit" className="btn btn-primary">
+                {select ? (
+                  <button className="btn btn-primary" data-dismiss="modal" onClick={handleSubmit}>
                     Update
                   </button>
                 ) : (
-                  <button type="submit" className="btn btn-primary">
+                  <button className="btn btn-success" data-dismiss="modal" onClick={handleSubmit}>
                     Submit
                   </button>
                 )}

@@ -47,7 +47,7 @@ function Layout({ children }) {
         <hr className="sidebar-divider my-0" />
 
         <li className="nav-item">
-          <a className="nav-link" href="/list">
+          <a className="nav-link" href="#">
             <i className="fas fa-fw fa-car"></i>
             <span>List Cars</span>
           </a>

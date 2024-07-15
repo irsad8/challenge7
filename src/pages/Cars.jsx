@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {v4 as uuid4} from 'uuid'
+import {v4 as uuidv4} from 'uuid'
 import { Layout, Card, Form } from "../components";
 
 function Cars() {
@@ -22,11 +22,16 @@ function Cars() {
       });
   };
 
-  const createCar = async (formData) => {
-    formData.append('id', uuid4())
+  const createCar = async () => {
+    const withId = { ...carSelected, id: uuidv4() };
+    if (carSelected && carSelected.image) {
+      withId.image = `./images/${carSelected.image}`;
+    }
     fetch("http://localhost:8000/cars", {
-      method : 'POST',
-      body : formData
+      method : 'POST',headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(withId),
     }).then(()=>{
       setSelect(false)
       setTimeout(() => {
@@ -35,10 +40,16 @@ function Cars() {
     })
   }
 
-  const updateCar = async (formData, id) => {
+  const updateCar = async (id) => {
+    if (carSelected && carSelected.image) {
+      carSelected.image = `./images/${carSelected.image}`;
+    }
     fetch("http://localhost:8000/cars/" + id, {
       method : 'PUT',
-      body : formData
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(carSelected),
     }).then(()=>{
       setCarSelected("")
       setSelect(false)

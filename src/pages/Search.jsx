@@ -28,7 +28,7 @@ function Search() {
       <div className="container">
         <div className="row" id="cars-container">
           {cars.filter(car=> car.available === find.driver && car.capacity >= find.amount).map(car=>(
-            <Card key={car.id} car={car}/>
+            <Card key={car.id} car={car} view="true" />
           ))}
         </div>
       </div>

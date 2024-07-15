@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ car, setCarSelected, deleteCar, setSelect }) {
+function Card({ car, setCarSelected, deleteCar, setSelect, view }) {
   return (
     <div className="col-4 mb-4">
       <div className="card">
@@ -34,24 +34,33 @@ function Card({ car, setCarSelected, deleteCar, setSelect }) {
               <i className="bi bi-calendar4"></i> tahun {car.year}
             </li>
           </ul>
-          <div className="d-flex justify-content-between gap-2">
-            <button
-              className="btn btn-danger w-100"
-              type="button"
-              onClick={() => deleteCar(car.id)}
-            >
-              Delete
+          {view === "true" ? (
+            <button className="btn btn-success w-100" type="button">
+              Pilih Mobil
             </button>
-            <button
-              className="btn btn-warning w-100"
-              type="button"
-              data-toggle="modal"
-              data-target="#formModal"
-              onClick={() => {setCarSelected(car); setSelect(true)}}
-            >
-              Edit
-            </button>
-          </div>
+          ) : (
+            <div className="d-flex justify-content-between gap-2">
+              <button
+                className="btn btn-danger w-100"
+                type="button"
+                onClick={() => deleteCar(car.id)}
+              >
+                Delete
+              </button>
+              <button
+                className="btn btn-warning w-100"
+                type="button"
+                data-toggle="modal"
+                data-target="#formModal"
+                onClick={() => {
+                  setCarSelected(car);
+                  setSelect(true);
+                }}
+              >
+                Edit
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
